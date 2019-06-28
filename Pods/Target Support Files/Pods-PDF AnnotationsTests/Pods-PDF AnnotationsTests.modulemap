@@ -1,0 +1,6 @@
+framework module Pods_PDF_AnnotationsTests {
+  umbrella header "Pods-PDF AnnotationsTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
