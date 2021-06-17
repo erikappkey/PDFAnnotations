@@ -306,7 +306,7 @@ class ViewController: UIViewController {
             print("File not found.")
             self.view.makeToast("File not found, Downloading file.")
             
-            let urlDownload = URL(string: "https://www.ets.org/Media/Tests/TOEFL/pdf/SampleQuestions.pdf")
+            let urlDownload = URL(string: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf")
             AF.download(urlDownload!, to: destination).response { response in
                 if response.error == nil, let _ = response.fileURL?.path {
                     print(response.fileURL?.path as Any)
