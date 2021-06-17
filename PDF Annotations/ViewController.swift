@@ -289,7 +289,7 @@ class ViewController: UIViewController {
         let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
         self.fileURL = documentsURL.appendingPathComponent("your.pdf")
         
-        let destination: DownloadRequest.DownloadFileDestination = { _, _ in
+        let destination: DownloadRequest.Destination = { _, _ in
             return (self.fileURL!, [.removePreviousFile, .createIntermediateDirectories])
         }
         
@@ -307,9 +307,9 @@ class ViewController: UIViewController {
             self.view.makeToast("File not found, Downloading file.")
             
             let urlDownload = URL(string: "https://www.ets.org/Media/Tests/TOEFL/pdf/SampleQuestions.pdf")
-            Alamofire.download(urlDownload!, to: destination).response { response in
-                if response.error == nil, let _ = response.destinationURL?.path {
-                    print(response.destinationURL?.path as Any)
+            AF.download(urlDownload!, to: destination).response { response in
+                if response.error == nil, let _ = response.fileURL?.path {
+                    print(response.fileURL?.path as Any)
                     
                     // load pdf downloaded
                     self.loadFiles(url: self.fileURL!)
